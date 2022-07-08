@@ -46,6 +46,19 @@ class AuthApi {
         'Authorization': `Bearer ${data}`
       }
     })
+    .then(res => {
+      try {
+        if (res.ok === true){
+          this._parseResponse(res)
+        }
+      } catch(err){
+        return (err)
+      }
+    })
+    .then(res => {
+      return res
+    })
+    .catch((err) => console.log(err))
   }
 }
 const authApi = new AuthApi(BASE_URL)

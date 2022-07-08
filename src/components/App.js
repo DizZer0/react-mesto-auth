@@ -17,10 +17,9 @@ function App() {
   function sendUserToken(token) {
     authApi.getValidityToken(token)
       .then(res => {
-        if(res.ok === true) {
-          handleLoggedIn()
-        }
+        handleLoggedIn()
       })
+      .catch(err => console.log(err))
   }
 
   function handleAuthorizationInfo(data) {
@@ -32,6 +31,7 @@ function App() {
         }
       })
       .catch(err => {
+        console.log(err)
         setIsInfoTooltipPopupOpen(true)
         setIsSuccess(false)
       })
@@ -56,6 +56,7 @@ function App() {
         setIsSuccess(true)
       })
       .catch(err => {
+        console.log(err)
         setIsInfoTooltipPopupOpen(true)
         setIsSuccess(false)
       })
@@ -64,12 +65,10 @@ function App() {
   React.useEffect(() => {
     authApi.getValidityToken(localStorage.getItem('jwt'))
       .then(res => {
-        if(res.ok) {
-          setLoggedIn('true')
-          navigate('/')
-        }
+        setLoggedIn('true')
+        navigate('/')
       })
-      .catch(err => console.log('токен не найден'))
+      .catch(err => console.log(err))
   }, [])
   return (
     <div className="page">

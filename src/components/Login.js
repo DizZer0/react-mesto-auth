@@ -24,8 +24,8 @@ function handleAuthorizationInfo(e) {
       <form className='form-auth' onSubmit={handleAuthorizationInfo}>
         <h2 className='form-auth__title'>Вход</h2>
         <fieldset className='form-auth__fieldset'>
-          <input name='email' className='form-auth__input' onChange={handleChangeEmail} type='email' placeholder='Email'/>
-          <input name='password' className='form-auth__input' onChange={handleChangePassword} type='password' placeholder='Пароль'/>
+          <input name='email' className='form-auth__input' value={email} onChange={handleChangeEmail} type='email' placeholder='Email'/>
+          <input name='password' className='form-auth__input' value={password} onChange={handleChangePassword} type='password' placeholder='Пароль'/>
         </fieldset>
         <button className='form-auth__btn' type='submit'>Войти</button>
       </form>
